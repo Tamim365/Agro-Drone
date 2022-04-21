@@ -6749,6 +6749,13 @@ form.dropzone {
 9.2 Vector Map
 ---------------------------*/
 
+.video-frame{
+    width: 50%;
+    display: block;
+    margin: 0 auto;
+}
+
+
 
 /*-------------------------------------------------------------------
 Media Query
