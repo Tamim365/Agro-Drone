@@ -159,7 +159,7 @@ body {
     font-family: 'Circular Std Book';
     font-style: normal;
     font-weight: normal;
-    font-size: 14px;
+    font-size: 20px;
     color: #71748d;
     background-color: #efeff6;
     -webkit-font-smoothing: antialiased;
@@ -1644,8 +1644,8 @@ Left Navigation Sidebar
     top: 60px;
     overflow: auto;
     background-color: #fff;
-    -webkit-box-shadow: 0px 0px 28px 0px rgba(82, 63, 105, 0.13);
-    box-shadow: 0px 0px 28px 0px rgba(82, 63, 105, 0.13);
+    -webkit-box-shadow: 0px 0px 28px 0px rgba(45, 85, 255, 1);
+    box-shadow: 0px 0px 28px 0px rgba(45, 85, 255, 1);
     -webkit-transition: all 0.3s ease;
 }
 
@@ -1693,7 +1693,7 @@ Left Navigation Sidebar
     font-size: 14px;
     padding: 12px;
     /* margin-bottom: 2px; */
-    color: #71789e;
+    color: whitesmoke;
     transition: 0.3s;
 }
 
@@ -1717,7 +1717,7 @@ Left Navigation Sidebar
     padding-left: 12px;
     padding-right: 12px;
     /* margin-top: 5px; */
-    background: #24274a;
+    background: blue;
 }
 
 .nav-left-sidebar .submenu .nav .nav-item .nav-link {
@@ -1805,26 +1805,28 @@ Leftsidebar - dark
 ------------------------- */
 
 .sidebar-dark {
-    background-color: #00092C;
+    background-color: rgb(113, 152, 236);
     -webkit-box-shadow: 0px 0px 28px 0px rgba(82, 63, 105, 0.13);
     box-shadow: 0px 0px 28px 0px rgba(82, 63, 105, 0.13);
     -webkit-transition: all 0.3s ease;
 }
 
 .sidebar-dark .nav-divider {
-    color: #a4aadb;
-    font-size: 12px;
+    color: white;
+    font-size: 24px;
     letter-spacing: 1px;
 }
 
 .sidebar-dark.nav-left-sidebar .nav-link i {
-    color: #7a80b4;
+    color: white;
+  
 }
 
 .sidebar-dark.nav-left-sidebar .navbar-nav .nav-item {}
 
 .sidebar-dark.nav-left-sidebar .navbar-nav .nav-link {
-    color: #7a80b4;
+    color: white;
+    font-size: 20px;
 }
 
 .sidebar-dark.nav-left-sidebar .navbar-nav .nav-link:focus,
@@ -1870,7 +1872,7 @@ Sidebar Page Navigations
 .sidebar-nav-fixed ul li {}
 
 .sidebar-nav-fixed ul li a {
-    font-size: 14px;
+    font-size: 20px;
     color: #71728e;
     display: block;
     padding: 5px 15px;
@@ -3218,7 +3220,7 @@ btn-link
 .card-title {}
 
 .card-subtitle {
-    font-size: 14px;
+    font-size: 24px;
 }
 
 .card-body {}
@@ -3233,7 +3235,7 @@ btn-link
 .card-link {}
 
 .toolbar {
-    font-size: 18px;
+    font-size: 28px;
 }
 
 .card-header-title {
