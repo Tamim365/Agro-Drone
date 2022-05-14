@@ -159,7 +159,7 @@ body {
     font-family: 'Circular Std Book';
     font-style: normal;
     font-weight: normal;
-    font-size: 14px;
+    font-size: 20px;
     color: #71748d;
     background-color: #efeff6;
     -webkit-font-smoothing: antialiased;
@@ -3220,7 +3220,7 @@ btn-link
 .card-title {}
 
 .card-subtitle {
-    font-size: 14px;
+    font-size: 24px;
 }
 
 .card-body {}
@@ -3235,7 +3235,7 @@ btn-link
 .card-link {}
 
 .toolbar {
-    font-size: 18px;
+    font-size: 28px;
 }
 
 .card-header-title {
