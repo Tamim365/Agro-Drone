@@ -43,7 +43,7 @@
                                 <button href="#" class="btn btn-primary" onclick="play_cam()" id="play">Play</button>
                                 <button href="#" class="btn btn-primary" onclick="pause_cam()"id="pause">Pause</button>
                                 <button href="#" class="btn btn-primary" onclick="reload_cam()" id="reload">Reload</button>
-                                <button href="#" class="btn btn-primary" onclick="capture_img()" id="capture">Capture Image</button>
+                                <button href="#" class="btn btn-primary" onclick="img_cap()" id="capture">Capture Image</button>
                                 <button class="btn btn-primary dropdown-toggle" type="button" id="fps1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                     FPS
                                 </button>
@@ -58,7 +58,9 @@
                         </div>
                         <div class="card">
                             <div class="card-body">
-                                <h4>Result Analysis</h4>
+                                <h4>Captured Picture</h4>
+                                <img src="assets/images/video.png" alt="404 - camera not found" id="cap-frame" class="img-frame">
+                                <button href="#" class="btn btn-primary" onclick="download_img()" id="downImg">Download Image</button>
                             </div>
                         </div>
                     </div>
@@ -81,6 +83,8 @@
     <script>
         var host_img_url = "assets/images/video.png";
         var cam_url = "http://192.168.1.155:5000/cam";
+        var cap_url = "http://192.168.0.92:5000/capture";
+        var down_url = "http://192.168.0.92:5000/download";
         function play_cam() {
           document.getElementById('cam-frame').src = cam_url;
           document.getElementById('play').setAttribute("disabled", "");
@@ -91,6 +95,20 @@
             document.getElementById('play').removeAttribute("disabled");
             document.getElementById('pause').setAttribute("disabled", "");
         }
+
+        function img_cap(){
+            //console.log("Called!");
+            //document.getElementById('capture').src=cap_url;
+            //pause_cam();
+            document.getElementById('cap-frame').src = cap_url;
+            //play_cam();
+        }
+
+        function download_img(){
+            //document.getElementById('downImg').src = down_url;
+            window.location = down_url;
+        }
+
         function reload_cam() {
             pause_cam();
             setTimeout(function () {
