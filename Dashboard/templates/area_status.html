@@ -44,7 +44,7 @@
                                         <table class="table">
                                             <thead class="bg-light">
                                                 <tr class="border-0">
-                                                    <th class="border-0">#</th>
+                                                    
                                                     <th class="border-0">Area Name</th>
                                                     <th class="border-0">Area Id</th>
                                                     <th class="border-0">Total Area (km<sup>2</sup>)</th>
@@ -54,51 +54,66 @@
                                                 </tr>
                                             </thead>
                                             <tbody>
+                                                {% for row in rows %}
                                                 <tr>
-                                                    <td>1</td>
-                                                    <td>Madhupur</td>
-                                                    <td>id000001 </td>
-                                                    <td>20</td>
-                                                    <td>27-08-2018 01:22:12</td>
-                                                    <td>Patricia J. King </td>
-                                                    <td><span class="badge-dot badge-brand mr-1"></span> Yellow leaf detected </td>
+                                                    <td>{{row['Area_name']}}</td>
+                                                    <td>{{row['Area_ID']}}</td>
+                                                    <td> {{row['Total_area']}}</td>
+                                                    <td>{{row['Scan_time']}}</td>
+                                                    <td>{{row['Officer']}}</td>	
+                                                    <td>{{row['Status']}}</td>		
                                                 </tr>
-                                                <tr>
-                                                    <td>2</td>
-                                                    <td>Madhupur</td>
-                                                    <td>id000002 </td>
-                                                    <td>12</td>
-                                                    <td>25-08-2018 21:12:56</td>
-                                                    <td>Rachel J. Wicker </td>
-                                                    <td><span class="badge-dot badge-success mr-1"></span>Yellow leaf detected </td>
-                                                </tr>
-                                                <tr>
-                                                    <td>3</td>
-                                                    <td>Madhupur</td>
-                                                    <td>id000003 </td>
-                                                    <td>23</td>
-                                                    <td>24-08-2018 14:12:77</td>
-                                                    <td>Michael K. Ledford </td>
-                                                    <td><span class="badge-dot badge-success mr-1"></span>Yellow leaf detected </td>
-                                                </tr>
-                                                <tr>
-                                                    <td>4</td>
-                                                    <td>Madhupur</td>
-                                                    <td>id000004 </td>
-                                                    <td>34</td>
-                                                    <td>23-08-2018 09:12:35</td>
-                                                    <td>Michael K. Ledford </td>
-                                                    <td><span class="badge-dot badge-success mr-1"></span>Yellow leaf detected </td>
-                                                </tr>
-                                                <tr>
-                                                    <td colspan="9"><a href="#" class="btn btn-outline-light float-right">View Details</a></td>
-                                                </tr>
+                                              {% endfor %}
+                                                
+                                                
+                                                
+                                               
                                             </tbody>
                                         </table>
                                     </div>
                                 </div>
                             </div>
                         </div>
+                        
+
+                          <!--form inputs-->
+                          <form class="splash-container" action="/get_status" method="POST">
+                            <div class="card">
+                                <div class="card-header">
+                                    <h3 class="mb-1">Recent Area</h3>
+                                </div>
+                                <div class="card-body">
+                                    <div class="form-group">
+                                        <input class="form-control form-control-lg" type="text" name="name" required="" placeholder="Name" autocomplete="off">
+                                    </div>
+                                    <div class="form-group">
+                                        <input class="form-control form-control-lg" type="text" name="id" required="" placeholder="ID" autocomplete="off">
+                                    </div>
+                                    <div class="form-group">
+                                        <input class="form-control form-control-lg" type="text" name="totalarea" required="" placeholder="Total Area" autocomplete="off">
+                                    </div>
+                                    <div class="form-group">
+                                        <input class="form-control form-control-lg" name="scantime" type="text" required="" placeholder="Scan time">
+                                    </div>
+                                    <div class="form-group">
+                                        <input class="form-control form-control-lg" name="officer" type="text" required="" placeholder="Officer">
+                                    </div>
+                                    <div class="form-group">
+                                        <input class="form-control form-control-lg" name="status" type="text" required="" placeholder="Status">
+                                    </div>
+
+                                    
+                                    <div class="form-group">
+                                        <input type="submit" class="btn btn-block btn-primary" value="Submit">
+                                    </div>
+                                </div>
+                                
+                            </div>
+                        </form>
+                        
+
+                       
+
                         <div class="card">
                             <h5 class="card-header">Plants</h5>
                             <div class="card-body">
