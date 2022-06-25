@@ -4,6 +4,7 @@ from matplotlib import pyplot as plt
 from matplotlib import image as mpimg
 from time import time
 import cv2
+import subprocess
 
 class Detect():
   def __init__(self, capture_index, model_name):
@@ -110,17 +111,15 @@ class Detect():
     
       cap.release()
 
-def run_video_detector():
+def run_live_detector():
     detector = Detect(capture_index=4, model_name='controller/exp2/weights/last.pt')
     detector()
 
 def run_image_detector(file):
     model = torch.hub.load('ultralytics/yolov5', 'custom', path='controller/exp2/weights/last.pt', force_reload=True)
     result = model(file)
-    # print(result)
-    # summary = result.pandas().xyxy[0]
-    # print(summary)
-    # '%matplotlib inline'
-    # plt.imshow(np.squeeze(result.render()))
-    # plt.show()
     return result
+
+def run_video_detector(file):
+    subprocess.call("rm -d controller/yolov5/runs/detect/exp* -r", shell=True)
+    subprocess.call("python3 controller/yolov5/detect.py --weights controller/exp2/weights/last.pt --source " + file, shell=True)
