@@ -1,0 +1,94 @@
+<!doctype html>
+<html lang="en">
+ 
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>Agro-Drone</title>
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="../assets/vendor/bootstrap/css/bootstrap.min.css">
+    <link href="../assets/vendor/fonts/circular-std/style.css" rel="stylesheet">
+    <link rel="stylesheet" href="../assets/libs/css/style.css">
+    <link rel="stylesheet" href="../assets/vendor/fonts/fontawesome/css/fontawesome-all.css">
+</head>
+
+<body>
+    <!-- ============================================================== -->
+    <!-- main wrapper -->
+    <!-- ============================================================== -->
+    <div class="dashboard-main-wrapper">
+         <!-- ============================================================== -->
+        <!-- navbar -->
+        {%include 'includes/navbar.html' %}
+        <!-- end navbar -->
+        <!-- ============================================================== -->
+        <!-- ============================================================== -->
+        <!-- left sidebar -->
+        {% if 2==2 %}
+            {%include 'includes/sidebar.html' %}
+        {% endif %}
+        <!-- end left sidebar -->
+        <!-- ============================================================== -->
+        <!-- ============================================================== -->
+        <!-- wrapper  -->
+        <!-- ============================================================== -->
+        <div class="dashboard-wrapper">
+            <div class="container-fluid dashboard-content">
+                <div class="row">
+                    <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+                        <h3 class="text-center">Content goes here!</h3>
+                    </div>
+                </div>
+            </div><!-- login page  -->
+            <!-- ============================================================== -->
+            <div class="splash-container">
+                <div class="card ">
+                    <div class="card-header text-center"><a href="/"><img class="logo-img" src="../assets/images/logo.png" alt="logo"></a><span class="splash-description">Please enter your user information.</span></div>
+                    <div class="card-body">
+                        <form>
+                            <div class="form-group">
+                                <input class="form-control form-control-lg" id="username" type="text" placeholder="Email" autocomplete="off">
+                            </div>
+                            <div class="form-group">
+                                <input class="form-control form-control-lg" id="password" type="password" placeholder="Password">
+                            </div>
+                            <div class="form-group">
+                                <label class="custom-control custom-checkbox">
+                                    <input class="custom-control-input" type="checkbox"><span class="custom-control-label">Remember Me</span>
+                                </label>
+                            </div>
+                            <button type="submit" class="btn btn-primary btn-lg btn-block">Sign in</button>
+                        </form>
+                    </div>
+                    <div class="card-footer bg-white p-0  ">
+                        <div class="card-footer-item card-footer-item-bordered">
+                            <a href="#" class="footer-link">Create An Account</a></div>
+                        <div class="card-footer-item card-footer-item-bordered">
+                            <a href="#" class="footer-link">Forgot Password</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+          
+            <!-- ============================================================== -->
+            <!-- end login page  -->
+
+            <!-- ============================================================== -->
+            <!-- footer -->
+            {% include 'includes/footer.html' %}
+            <!-- end footer -->
+            <!-- ============================================================== -->
+        </div>
+    </div>
+    <!-- ============================================================== -->
+    <!-- end main wrapper -->
+    <!-- ============================================================== -->
+    <!-- Optional JavaScript -->
+    <script src="../assets/vendor/jquery/jquery-3.3.1.min.js"></script>
+    <script src="../assets/vendor/bootstrap/js/bootstrap.bundle.js"></script>
+    <script src="../assets/vendor/slimscroll/jquery.slimscroll.js"></script>
+    <script src="../assets/libs/js/main-js.js"></script>
+</body>
+ 
+</html>
