@@ -33,14 +33,11 @@ python-debian==0.1.32
 pytz==2018.3
 pyxdg==0.25
 PyYAML==3.12
-pyzed==3.7
 reportlab==3.4.0
 requests==2.18.4
 requests-unixsocket==0.1.5
-roman==2.0.0
 SecretStorage==2.3.1
 simplejson==3.13.2
-six==1.11.0
 ssh-import-id==5.7
 system-service==0.3
 systemd-python==234
