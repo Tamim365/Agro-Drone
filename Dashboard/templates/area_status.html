@@ -41,6 +41,7 @@
                                 <h5 class="card-header">Recent Area</h5>
                                 <div class="card-body p-0">
                                     <div class="table-responsive">
+                                        <form action="/show_status" METHOD="POST">
                                         <table class="table">
                                             <thead class="bg-light">
                                                 <tr class="border-0">
@@ -56,12 +57,12 @@
                                             <tbody>
                                                 {% for row in rows %}
                                                 <tr>
-                                                    <td>{{row['Area_name']}}</td>
-                                                    <td>{{row['Area_ID']}}</td>
-                                                    <td> {{row['Total_area']}}</td>
-                                                    <td>{{row['Scan_time']}}</td>
-                                                    <td>{{row['Officer']}}</td>	
-                                                    <td>{{row['Status']}}</td>		
+                                                    <td>{{ row['Area_name'] }}</td>
+                                                    <td>{{ row['Area_ID'] }}</td>
+                                                    <td>{{ row['Total_area'] }}</td>
+                                                    <td>{{ row['Scan_time'] }}</td>
+                                                    <td>{{ row['Officer'] }}</td>	
+                                                    <td>{{ row['Status'] }}</td>		
                                                 </tr>
                                               {% endfor %}
                                                 
@@ -70,6 +71,8 @@
                                                
                                             </tbody>
                                         </table>
+                                        <button type="submit" , class="viewall-button" name="save" , value="save">View All</button>
+                                        </form>
                                     </div>
                                 </div>
                             </div>

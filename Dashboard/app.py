@@ -67,13 +67,19 @@ def get_status():
 def index_show():   
     conn = sqlite3.connect('./agro_drone.db')
     conn.row_factory = sqlite3.Row
-    return conn
+    cursor = conn.cursor()
+    cursor.execute("SELECT * FROM agri_status")
+    results = cursor.fetchall()
+    #conn.close()
+    return results
  
-@app.route('/show_status')
+@app.route('/show_status', methods=['POST', 'GET'])
 def show_status():
-    conn = index_show()
-    rows = conn.execute('SELECT * FROM agri_status').fetchall()
-    return render_template("area_status.html", rows=rows)
+    #conn = index_show()
+    #rows = conn.execute('SELECT * FROM agri_status').fetchall()
+    rows = index_show()
+    return render_template("area_status.html",rows=rows)
+    
 @app.route('/area-map')
 def area_map():
     return render_template('area_map.html')
