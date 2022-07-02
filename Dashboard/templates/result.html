@@ -112,12 +112,13 @@
                                     <input type="submit" />
                                 </form>
                             </div>
-                            {% if result[1] == -1 %}
+                            {% if result[1] != 0 %}
                             <div class="card-header">Test Result:</div>
                             <div class="card-body">
-                                <video width="720" autoplay="autoplay" controls="controls" preload="preload">
-                                    <source src="/controller/yolov5/runs/detect/exp/test.mp4" type="video/mp4">
-                                </video>
+                                <img src="/play" alt="404 - video not found">
+                                <!-- <video width="720" autoplay="autoplay" controls="controls" preload="preload">
+                                    <source src="../controller/yolov5/runs/detect/exp/test.mp4" type="video/mp4">
+                                </video> -->
                             </div>
                             {% endif %}
                         </div>

@@ -8,6 +8,8 @@ import matplotlib.pyplot as plt
 from PIL import Image
 from io import BytesIO
 import numpy as np
+import cv2
+import torch
 
 
 # from requests import request
@@ -29,7 +31,7 @@ def allowed_file(filename):
 
 @app.route('/controller/<path:path>')
 def play(path):
-    return send_from_directory('/controller/', path)
+    return send_from_directory('controller', path)
 
 @app.route('/<path:path>')
 def send_static(path):
@@ -82,8 +84,46 @@ def video_detector():
             filename = secure_filename(file.filename)
             file.save(os.path.join(app.config['UPLOAD_FOLDER'], filename))
             controller.leaf_detect.run_video_detector(file.filename)
-            result = [0, -1]
-            return render_template('result.html', result = result)
+            # Model
+        model = torch.hub.load('ultralytics/yolov5', 'custom', path='exp2/weights/last.pt', force_reload=True)
+
+        folder = 'imgs'
+
+        path = os.listdir(folder)
+
+        imgs = []
+
+        for i in path:
+            if i.endswith(".jpg"):
+                x = Image.open(folder + '/' + i)
+                imgs.append(x)
+    
+        # Inference
+        result = model(imgs)
+        res = result
+        summary = result.pandas().xyxy[0]
+        healthy = diseased = 0
+        for i in summary['name']:
+            if i == 'Leaf_Healty':
+                healthy += 1
+            else:
+                diseased += 1
+        if(healthy + diseased != 0):
+            p_h = healthy/(healthy + diseased)
+            p_d = diseased/(healthy + diseased)
+        else:
+            p_h = 0
+            p_d = 0
+        p_h *= 100
+        p_d *= 100
+        # %matplotlib inline
+        plt.imshow(np.squeeze(result.render()))
+        # plt.show()
+        result = []
+        result.append(p_h)
+        result.append(p_d)
+        res.render()
+        return render_template('result.html', result = result)
     return redirect(url_for('.analysis'))
 @app.route('/detect/image', methods=["POST", "GET"])
 def image_detector():
@@ -108,9 +148,13 @@ def image_detector():
                     healthy += 1
                 else:
                     diseased += 1
-            p_h = healthy/(healthy + diseased)
+            if(healthy + diseased != 0):
+                p_h = healthy/(healthy + diseased)
+                p_d = diseased/(healthy + diseased)
+            else:
+                p_h = 0
+                p_d = 0
             p_h *= 100
-            p_d = diseased/(healthy + diseased)
             p_d *= 100
             # %matplotlib inline
             plt.imshow(np.squeeze(result.render()))
@@ -129,6 +173,26 @@ def image_detector():
 def live_detector():
     controller.leaf_detect.run_live_detector()
     return redirect(url_for('.analysis'))
+@app.route('/play')
+def play_video():
+    return Response(play_vid(),mimetype='multipart/x-mixed-replace; boundary=frame')
+
+
+def play_vid():
+    cam = cv2.VideoCapture('controller/yolov5/runs/detect/exp/test.mp4')
+    while 1 :
+        try:
+            check,frame = cam.read()
+            #gray = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)
+            if(check):
+                imgencode = cv2.imencode('.jpg',frame)[1]
+                strinData = imgencode.tostring()
+                yield (b'--frame\r\n'b'Content-Type: text/plain\r\n\r\n'+strinData+b'\r\n')
+        except:
+            cam.release()
+            break
+    return 'Closed'
+
 
 
 if __name__ == "__main__":

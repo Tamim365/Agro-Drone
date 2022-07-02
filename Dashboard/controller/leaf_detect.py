@@ -123,3 +123,21 @@ def run_image_detector(file):
 def run_video_detector(file):
     subprocess.call("rm -d controller/yolov5/runs/detect/exp* -r", shell=True)
     subprocess.call("python3 controller/yolov5/detect.py --weights controller/exp2/weights/last.pt --source " + file, shell=True)
+    try:
+        vid = cv2.VideoCapture(file)
+        i=0
+        while(True):
+            ret, frame = vid.read()
+            im_name = 'imgs/test'+str(i)+'.jpg'
+            cv2.imwrite(im_name,frame)
+            i+=1
+            # cv2.imshow('frame', frame)
+            if cv2.waitKey(1) & 0xFF == ord('q'):
+                break
+    except:
+        print("Hello")
+    finally:
+        # After the loop release the cap object
+        vid.release()
+        cv2.destroyAllWindows()
+        # Destroy all the windows
