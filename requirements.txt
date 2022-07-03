@@ -22,7 +22,6 @@ seaborn==0.11.2
 setuptools==39.0.1
 tensorflow==2.9.1
 tensorflowjs==3.18.0
-tensorrt==0.0.1.dev5
 tflite_runtime==2.9.1
 thop==0.1.0.post2207010342
 torch==1.10.1
