@@ -35,28 +35,110 @@
             <div class="container-fluid dashboard-content">
                 <div class="row">
                     <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
-                        <form action="/detect/image" method="POST" enctype="multipart/form-data">
-                            <input type="file" name="file" />
-                            <input type="submit" />
-                        </form>
+                        <div class="card">
+                            <div class="card-header">Test Image</div>
+                            <div class="card-body">
+                                <form action="/detect/image" method="POST" enctype="multipart/form-data">
+                                    <input type="file" name="file" />
+                                    <input type="submit" />
+                                </form>
+                            </div>
+                            {% block content %}
+                            {% if result[0] > 0 or result[1] > 0 %}
+                            <div class="card-header">Test Result:</div>
+                            <div class="card-body">
+                                <div> <img width="30%" src="/assets/test.jpg" \></div>
+                                <div>Healthy: {{result[0]}}%</div>
+                                <div>Diseased: {{result[1]}}%</div>
+                            </div>
+                            {% endif %}
+                            {% endblock content %}
+                        </div>
+                    </div>
+                    {% if result[0] > 0 or result[1] > 0 %}
+                    <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12 col-12">
+                        <div class="card">
+                            <div class="card-body">
+                                <h2>Disease ID: </h2>
+                                <p id="iddd">1620</p>
+                                <br>
+                                <h2>Disease Name :</h2>
+                                <p id="nameee">Yellow Leaf</p>
+                                <br>
+                                <h2>Symptoms:</h2>
+                                <ul id="items1" class="list-group">
+                                    <li class="list-group-item">yellow spots on leaves</li>
+                                    <li class="list-group-item"></li>
+                                    <li class="list-group-item"></li>
+                                </ul>
+                                <br>
+                                <h2>Reason Behind the disease :</h2>
+                                <ul id="items2" class="list-group">
+                                    <li class="list-group-item">Improper watering</li>
+                                    <li class="list-group-item">Improper soil pH</li>
+                                    <li class="list-group-item">Lack of proper nutrients</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12 col-12">
+                        <div class="card">
+                            <div class="card-body">
+                        <h2>Treatment :</h2>
+                        <h3>Chemical Treatment</h3>
+                        <ul id="items3" class="list-group">
+                            <li class="list-group-item">water only when soil feel dry</li>
+                            <li class="list-group-item">Ironite Plus</li>
+                            <li class="list-group-item">proper fertilization with trusted, premium plant foods</li>
+                        </ul>
+                        <h3>Physical Treatment</h3>
+                        <ul id="items4" class="list-group">
+                            <li class="list-group-item">water only when soil feel dry</li>
+                            <li class="list-group-item">Do soil tests 3 times a month</li>
+                            <li class="list-group-item">proper fertilization with trusted, premium plant foods</li>
+                        </ul>
+                    </div>
+                        </div>
+                    </div>
+                    {% endif %}
+                </div>
+                <div class="row">
+                    <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+                        <div class="card">
+                            <div class="card-header">Test Video</div>
+                            <div class="card-body">
+                                <form action="/detect/video" method="POST" enctype="multipart/form-data">
+                                    <input type="file" name="file" />
+                                    <input type="submit" />
+                                </form>
+                            </div>
+                            {% if result[1] != 0 %}
+                            <div class="card-header">Test Result:</div>
+                            <div class="card-body">
+                                <img src="/play" alt="404 - video not found">
+                                <!-- <video width="720" autoplay="autoplay" controls="controls" preload="preload">
+                                    <source src="../controller/yolov5/runs/detect/exp/test.mp4" type="video/mp4">
+                                </video> -->
+                            </div>
+                            {% endif %}
+                        </div>
                     </div>
                 </div>
                 <div class="row">
                     <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
-                        {% block content %}
-                        {% if result[0] > 0 or result[1] > 0  %}
-                        <div>Healthy: {{result[0]}}%</div>
-                        <div>Diseased: {{result[1]}}%</div>
-                        {% endif %}
-                        {% endblock content %}
+
                     </div>
                 </div>
-                
-                <div class="card">
-                    <div class="card-body">
-                        <h4>Live</h4>
-                        <!-- <img src="assets/images/video.png" alt="404 - camera not found" id="cap-frame" class="img-frame"> -->
-                        <a href="/detect/video" class="btn btn-primary" >Live Detection</a>
+
+                <div class="row">
+                    <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+                        <div class="card">
+                            <div class="card-header">Test From Live Video</div>
+                            <div class="card-body">
+                                <!-- <img src="assets/images/video.png" alt="404 - camera not found" id="cap-frame" class="img-frame"> -->
+                                <a href="/detect/live" class="btn btn-primary">Live Detection</a>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
