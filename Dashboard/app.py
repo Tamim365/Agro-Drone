@@ -86,13 +86,9 @@ def video_detector():
             controller.leaf_detect.run_video_detector(file.filename)
             # Model
         model = torch.hub.load('ultralytics/yolov5', 'custom', path='exp2/weights/last.pt', force_reload=True)
-
         folder = 'imgs'
-
         path = os.listdir(folder)
-
         imgs = []
-
         for i in path:
             if i.endswith(".jpg"):
                 x = Image.open(folder + '/' + i)
