@@ -36,91 +36,101 @@
         <div class="dashboard-wrapper">
             <div class="container-fluid dashboard-content">
                 <div class="row">
-                    <div class="col-xl-9 col-lg-12 col-md-6 col-sm-12 col-12">
-                        <div class="card">
-                            <h5 class="card-header">Recent Area</h5>
-                            <div class="card-body p-0">
-                                <div class="table-responsive">
-                                    <table class="table">
-                                        <thead class="bg-light">
-                                            <tr class="border-0">
-                                                <th class="border-0">#</th>
-                                                <th class="border-0">Area Name</th>
-                                                <th class="border-0">Area Id</th>
-                                                <th class="border-0">Total Area (km<sup>2</sup>)</th>
-                                                <th class="border-0">Scan Time</th>
-                                                <th class="border-0">Officer
-                                                <th>
-                                                <th class="border-0">Status</th>
-                                            </tr>
-                                        </thead>
-                                        <tbody>
-                                            <tr>
-                                                <td>1</td>
-                                                <td>Madhupur</td>
-                                                <td>id000001 </td>
-                                                <td>20</td>
-                                                <td>27-08-2018 01:22:12</td>
-                                                <td>Patricia J. King </td>
-                                                <td><span class="badge-dot badge-brand mr-1"></span> Yellow leaf
-                                                    detected </td>
-                                            </tr>
-                                            <tr>
-                                                <td>2</td>
-                                                <td>Madhupur</td>
-                                                <td>id000002 </td>
-                                                <td>12</td>
-                                                <td>25-08-2018 21:12:56</td>
-                                                <td>Rachel J. Wicker </td>
-                                                <td><span class="badge-dot badge-success mr-1"></span>Yellow leaf
-                                                    detected </td>
-                                            </tr>
-                                            <tr>
-                                                <td>3</td>
-                                                <td>Madhupur</td>
-                                                <td>id000003 </td>
-                                                <td>23</td>
-                                                <td>24-08-2018 14:12:77</td>
-                                                <td>Michael K. Ledford </td>
-                                                <td><span class="badge-dot badge-success mr-1"></span>Yellow leaf
-                                                    detected </td>
-                                            </tr>
-                                            <tr>
-                                                <td>4</td>
-                                                <td>Madhupur</td>
-                                                <td>id000004 </td>
-                                                <td>34</td>
-                                                <td>23-08-2018 09:12:35</td>
-                                                <td>Michael K. Ledford </td>
-                                                <td><span class="badge-dot badge-success mr-1"></span>Yellow leaf
-                                                    detected </td>
-                                            </tr>
-                                            <tr>
-                                                <td colspan="9"><a href="#"
-                                                        class="btn btn-outline-light float-right">View Details</a></td>
-                                            </tr>
-                                        </tbody>
-                                    </table>
+                        <div class="col-xl-9 col-lg-12 col-md-6 col-sm-12 col-12">
+                            <div class="card">
+                                <h5 class="card-header">Recent Area</h5>
+                                <div class="card-body p-0">
+                                    <div class="table-responsive">
+                                        <form action="/show_status" METHOD="POST">
+                                        <table class="table">
+                                            <thead class="bg-light">
+                                                <tr class="border-0">
+                                                    
+                                                    <th class="border-0">Area Name</th>
+                                                    <th class="border-0">Area Id</th>
+                                                    <th class="border-0">Total Area (km<sup>2</sup>)</th>
+                                                    <th class="border-0">Scan Time</th>
+                                                    <th class="border-0">Officer<th>
+                                                    <th class="border-0">Status</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                {% for row in rows %}
+                                                <tr>
+                                                    <td>{{ row['Area_name'] }}</td>
+                                                    <td>{{ row['Area_ID'] }}</td>
+                                                    <td>{{ row['Total_area'] }}</td>
+                                                    <td>{{ row['Scan_time'] }}</td>
+                                                    <td>{{ row['Officer'] }}</td>	
+                                                    <td>{{ row['Status'] }}</td>		
+                                                </tr>
+                                              {% endfor %}
+                                                
+                                                
+                                                
+                                               
+                                            </tbody>
+                                        </table>
+                                        <button type="submit" , class="viewall-button" name="save" , value="save">View All</button>
+                                        </form>
+                                    </div>
                                 </div>
                             </div>
                         </div>
-                    </div>
-                    <div class="card">
-                        <h5 class="card-header">Plants</h5>
-                        <div class="card-body">
-                            <div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
-                                <div class="carousel-inner">
-                                    <div class="carousel-item active">
-                                        <img class="d-block w-100" src="../assets/images/card-img-1.jpg"
-                                            alt="First slide">
+                        
+
+                          <!--form inputs-->
+                          <form class="splash-container" action="/get_status" method="POST">
+                            <div class="card">
+                                <div class="card-header">
+                                    <h3 class="mb-1">Recent Area</h3>
+                                </div>
+                                <div class="card-body">
+                                    <div class="form-group">
+                                        <input class="form-control form-control-lg" type="text" name="name" required="" placeholder="Name" autocomplete="off">
                                     </div>
-                                    <div class="carousel-item">
-                                        <img class="d-block w-100" src="../assets/images/card-img-2.jpg"
-                                            alt="Second slide">
+                                    <div class="form-group">
+                                        <input class="form-control form-control-lg" type="text" name="id" required="" placeholder="ID" autocomplete="off">
                                     </div>
-                                    <div class="carousel-item">
-                                        <img class="d-block w-100" src="../assets/images/card-img-3.jpg"
-                                            alt="Third slide">
+                                    <div class="form-group">
+                                        <input class="form-control form-control-lg" type="text" name="totalarea" required="" placeholder="Total Area" autocomplete="off">
+                                    </div>
+                                    <div class="form-group">
+                                        <input class="form-control form-control-lg" name="scantime" type="text" required="" placeholder="Scan time">
+                                    </div>
+                                    <div class="form-group">
+                                        <input class="form-control form-control-lg" name="officer" type="text" required="" placeholder="Officer">
+                                    </div>
+                                    <div class="form-group">
+                                        <input class="form-control form-control-lg" name="status" type="text" required="" placeholder="Status">
+                                    </div>
+
+                                    
+                                    <div class="form-group">
+                                        <input type="submit" class="btn btn-block btn-primary" value="Submit">
+                                    </div>
+                                </div>
+                                
+                            </div>
+                        </form>
+                        
+
+                       
+
+                        <div class="card">
+                            <h5 class="card-header">Plants</h5>
+                            <div class="card-body">
+                                <div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
+                                    <div class="carousel-inner">
+                                        <div class="carousel-item active">
+                                            <img class="d-block w-100" src="../assets/images/card-img-1.jpg" alt="First slide">
+                                        </div>
+                                        <div class="carousel-item">
+                                            <img class="d-block w-100" src="../assets/images/card-img-2.jpg" alt="Second slide">
+                                        </div>
+                                        <div class="carousel-item">
+                                            <img class="d-block w-100" src="../assets/images/card-img-3.jpg" alt="Third slide">
+                                        </div>
                                     </div>
                                 </div>
                                 <a class="carousel-control-prev" href="#carouselExampleControls" role="button"

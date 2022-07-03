@@ -50,6 +50,46 @@ def analysis():
 @app.route('/area-status')
 def area_status():
     return render_template('area_status.html')
+@app.route('/get_status', methods=["POST", "GET"])    
+def get_status():
+    if request.method=='POST':
+        try:
+            name =request.form['name']
+            id =request.form['id']
+            totalarea =request.form['totalarea']
+            scantime =request.form['scantime']
+            officer =request.form['officer']
+            status =request.form['status']
+            
+            conn = sqlite3.connect("./agro_drone.db")
+            cur = conn.cursor()
+            cur.execute("INSERT into agri_status(Area_name,Area_ID,Total_area,Scan_time,Officer,Status)values(?,?,?,?,?,?)",(name,id,totalarea,scantime,officer,status))
+            conn.commit()
+            flash('Record added Successfully',"success")
+              
+        except:
+            flash("Error in inserting","danger")
+        finally:
+            return redirect("/get_status")
+                   
+    return render_template('area_status.html')
+
+def index_show():   
+    conn = sqlite3.connect('./agro_drone.db')
+    conn.row_factory = sqlite3.Row
+    cursor = conn.cursor()
+    cursor.execute("SELECT * FROM agri_status")
+    results = cursor.fetchall()
+    #conn.close()
+    return results
+ 
+@app.route('/show_status', methods=['POST', 'GET'])
+def show_status():
+    #conn = index_show()
+    #rows = conn.execute('SELECT * FROM agri_status').fetchall()
+    rows = index_show()
+    return render_template("area_status.html",rows=rows)
+    
 @app.route('/area-map')
 def area_map():
     return render_template('area_map.html')
@@ -173,7 +213,6 @@ def live_detector():
 def play_video():
     return Response(play_vid(),mimetype='multipart/x-mixed-replace; boundary=frame')
 
-
 def play_vid():
     cam = cv2.VideoCapture('controller/yolov5/runs/detect/exp/test.mp4')
     while 1 :
@@ -192,4 +231,4 @@ def play_vid():
 
 
 if __name__ == "__main__":
-    app.run(host='0.0.0.0', port=8000, debug=True, threaded=True)
+     app.run(host='0.0.0.0', port=8000, debug=True, threaded=True)
