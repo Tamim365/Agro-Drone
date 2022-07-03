@@ -121,8 +121,8 @@ def run_image_detector(file):
     return result
 
 def run_video_detector(file):
-    subprocess.call("rm -d controller/yolov5/runs/detect/exp* -r", shell=True)
-    subprocess.call("python3 controller/yolov5/detect.py --weights controller/exp2/weights/last.pt --source " + file, shell=True)
+    # subprocess.call("rm -d controller/yolov5/runs/detect/exp* -r", shell=True)
+    # subprocess.call("python3 controller/yolov5/detect.py --weights controller/exp2/weights/last.pt --source " + file, shell=True)
     try:
         vid = cv2.VideoCapture(file)
         i=0
