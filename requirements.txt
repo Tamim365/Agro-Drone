@@ -4,6 +4,7 @@ Flask==2.0.3
 ipython==8.4.0
 matplotlib==3.2.2
 numpy==1.19.5
+nvidia-pyindex==1.0.9
 onnx==1.12.0
 onnxruntime==1.11.1
 opencv_python==4.6.0.66
@@ -11,7 +12,6 @@ openvino==2022.1.0
 pafy==0.5.5
 pandas==1.1.5
 Pillow==9.2.0
-protobuf==4.21.2
 psutil==5.9.1
 pycocotools==2.0.4
 PyYAML==6.0
@@ -21,7 +21,6 @@ seaborn==0.11.2
 setuptools==39.0.1
 tensorflow==2.9.1
 tensorflowjs==3.18.0
-tensorrt==0.0.1.dev5
 tflite_runtime==2.9.1
 thop==0.1.0.post2207010342
 torch==1.10.1
