@@ -52,9 +52,24 @@ def history():
     return render_template('history.html')
 @app.route('/login',methods=["GET","POST"])
 def login():
-   
+    if request.method=='POST':
+        name=request.form['name']
+        password=request.form['password']
+        con=sqlite3.connect("../agro_drone.db")
+        con.row_factory=sqlite3.Row
+        cur=con.cursor()
+        cur.execute("select * from agriOfficer where name=? and password=?",(name,password))
+        data=cur.fetchone()
 
+        if data:
+            session["name"]=data["name"]
+            session["password"]=data["password"]
+            return redirect("/")
+        else:
+            flash("Username and Password Mismatch","danger")
+        return redirect("/login")
     return render_template('login.html')
+
 @app.route('/register',methods=['GET','POST'])
 def register():
     if request.method=='POST':
@@ -77,6 +92,8 @@ def register():
             return redirect("/login")
                    
     return render_template('register.html')
+
+    
 # @app.route('/registerUser', methods=["POST", "GET"])
 # def registerUser():
 #     name = Request.form['name']
