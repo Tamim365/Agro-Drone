@@ -3,6 +3,7 @@ from flask import Flask, Request, render_template, send_from_directory, Response
 from werkzeug.utils import secure_filename
 import os
 import sqlite3
+import controller
 # import controller.leaf_detect
 # from matplotlib import pyplot as plt
 import numpy as np
@@ -25,13 +26,11 @@ app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
 def allowed_file(filename):
     return '.' in filename and \
            filename.rsplit('.', 1)[1].lower() in ALLOWED_EXTENSIONS
-
-
 @app.route('/<path:path>')
 def send_static(path):
     return send_from_directory('assets', path)
 
-@app.route('/')
+@app.route('/index')
 def index():
     return render_template('index.html')
 @app.route('/field-operation')
@@ -50,7 +49,7 @@ def area_map():
 @app.route('/history')
 def history():
     return render_template('history.html')
-@app.route('/login',methods=["GET","POST"])
+@app.route('/',methods=["GET","POST"])
 def login():
     if request.method=='POST':
         name=request.form['name']
@@ -64,10 +63,10 @@ def login():
         if data:
             session["name"]=data["name"]
             session["password"]=data["password"]
-            return redirect("/")
+            return redirect("/index")
         else:
             flash("Username and Password Mismatch","danger")
-        return redirect("/login")
+        return redirect("/")
     return render_template('login.html')
 
 @app.route('/register',methods=['GET','POST'])
@@ -78,8 +77,6 @@ def register():
             email =request.form['email']
             govtid =request.form['govtid']
             password =request.form['password']
-            
-            
             conn = sqlite3.connect("../agro_drone.db")
             cur = conn.cursor()
             cur.execute("INSERT into agriOfficer(name,email,govtid,password)values(?,?,?,?)",(name,email,govtid,password))
