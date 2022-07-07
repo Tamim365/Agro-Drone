@@ -5,7 +5,7 @@
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <title>Agro-Drone</title>
+    <title>Login page</title>
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="../assets/vendor/bootstrap/css/bootstrap.min.css">
     <link href="../assets/vendor/fonts/circular-std/style.css" rel="stylesheet">
@@ -18,21 +18,7 @@
     <!-- main wrapper -->
     <!-- ============================================================== -->
     <div class="dashboard-main-wrapper">
-         <!-- ============================================================== -->
-        <!-- navbar -->
-        {%include 'includes/navbar.html' %}
-        <!-- end navbar -->
-        <!-- ============================================================== -->
-        <!-- ============================================================== -->
-        <!-- left sidebar -->
-        {% if 2==2 %}
-            {%include 'includes/sidebar.html' %}
-        {% endif %}
-        <!-- end left sidebar -->
-        <!-- ============================================================== -->
-        <!-- ============================================================== -->
-        <!-- wrapper  -->
-        <!-- ============================================================== -->
+
         <div class="dashboard-wrapper">
             <div class="container-fluid dashboard-content">
                 <div class="row">
@@ -40,7 +26,8 @@
                         <h3 class="text-center">LOG IN</h3>
                     </div>
                 </div>
-            </div><!-- login page  -->
+            </div>
+            <!-- login page  -->
             <!-- ============================================================== -->
             <div class="splash-container">
                 <div class="card ">
@@ -55,7 +42,7 @@
                 {% endwith %}
                 
                     <div class="card-body">
-                        <form action="/login" method="POST">
+                        <form action="/" method="POST">
                             <div class="form-group">
                                 <input class="form-control form-control-lg" id="username" type="text" name="name" placeholder="Username" autocomplete="off">
                             </div>
@@ -79,16 +66,13 @@
                     </div>
                 </div>
             </div>
+           
           
-            <!-- ============================================================== -->
-            <!-- end login page  -->
-
-            <!-- ============================================================== -->
-            <!-- footer -->
-            <!-- {% include 'includes/footer.html' %} -->
-            <!-- end footer -->
-            <!-- ============================================================== -->
+        
         </div>
+         <!-- footer -->
+         {% include 'includes/footer.html' %}
+         <!-- end footer -->
     </div>
     <!-- ============================================================== -->
     <!-- end main wrapper -->
