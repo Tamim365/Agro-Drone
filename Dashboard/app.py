@@ -1,9 +1,10 @@
 from distutils.log import debug
-from flask import Flask, Request, render_template, send_from_directory, Response, redirect, flash, request, url_for
+from flask import Flask, Request, render_template, send_from_directory, Response, redirect, flash, request, url_for, session
 from werkzeug.utils import secure_filename
 import os
 import sqlite3
-import controller.leaf_detect
+import controller
+#import controller.leaf_detect
 import matplotlib.pyplot as plt
 from PIL import Image
 from io import BytesIO
@@ -16,7 +17,12 @@ import torch
 from model import user
 
 app = Flask(__name__, static_url_path='')
+app.secret_key = "123"
 conn = sqlite3.connect('./agro_drone.db')
+conn.execute(
+    "create table if not exists agriOfficer(name text, email text, govtid integer unique,password text)")
+conn.close()
+
 
 ALLOWED_EXTENSIONS = set(['png', 'jpg', 'jpeg', 'mp4'])
 UPLOAD_FOLDER = '/home/splash365/Desktop/IDP/Agro-Drone/Dashboard'
@@ -33,82 +39,132 @@ def allowed_file(filename):
 def play(path):
     return send_from_directory('controller', path)
 
+
 @app.route('/<path:path>')
 def send_static(path):
     return send_from_directory('assets', path)
 
-@app.route('/')
+
+@app.route('/index')
 def index():
     return render_template('index.html')
+
+
 @app.route('/field-operation')
 def field_op():
     return render_template('field_op.html')
+
+
 @app.route('/analysis')
 def analysis():
     result = [0, 0]
-    return render_template('result.html', result = result)
+    return render_template('result.html', result=result)
+
+
 @app.route('/area-status')
 def area_status():
     return render_template('area_status.html')
-@app.route('/get_status', methods=["POST", "GET"])    
+
+
+@app.route('/get_status', methods=["POST", "GET"])
 def get_status():
-    if request.method=='POST':
+    result = [0, 0]
+    if request.method == 'POST':
         try:
-            name =request.form['name']
-            id =request.form['id']
-            totalarea =request.form['totalarea']
-            scantime =request.form['scantime']
-            officer =request.form['officer']
-            status =request.form['status']
-            
+            name = request.form['name']
+            id = request.form['id']
+            totalarea = request.form['totalarea']
+            scantime = request.form['scantime']
+            officer = request.form['officer']
+
             conn = sqlite3.connect("./agro_drone.db")
             cur = conn.cursor()
-            cur.execute("INSERT into agri_status(Area_name,Area_ID,Total_area,Scan_time,Officer,Status)values(?,?,?,?,?,?)",(name,id,totalarea,scantime,officer,status))
+            cur.execute("INSERT into agri_status(Area_name,Area_ID,Total_area,Scan_time,Officer)values(?,?,?,?,?)",
+                        (name, id, totalarea, scantime, officer))
             conn.commit()
-            flash('Record added Successfully',"success")
-              
+            flash('Record added Successfully', "success")
+
         except:
-            flash("Error in inserting","danger")
+            flash("Error in inserting", "danger")
         finally:
             return redirect("/get_status")
-                   
-    return render_template('area_status.html')
 
-def index_show():   
+    return render_template('result.html', result=result)
+
+
+def index_show():
     conn = sqlite3.connect('./agro_drone.db')
     conn.row_factory = sqlite3.Row
     cursor = conn.cursor()
     cursor.execute("SELECT * FROM agri_status")
     results = cursor.fetchall()
-    #conn.close()
+    # conn.close()
     return results
- 
+
+
 @app.route('/show_status', methods=['POST', 'GET'])
 def show_status():
     #conn = index_show()
     #rows = conn.execute('SELECT * FROM agri_status').fetchall()
     rows = index_show()
-    return render_template("area_status.html",rows=rows)
-    
+    return render_template("area_status.html", rows=rows)
+
+
 @app.route('/area-map')
 def area_map():
     return render_template('area_map.html')
+
+
 @app.route('/history')
 def history():
     return render_template('history.html')
-@app.route('/login')
+
+
+@app.route('/', methods=["GET", "POST"])
 def login():
+    if request.method == 'POST':
+        name = request.form['name']
+        password = request.form['password']
+        con = sqlite3.connect("./agro_drone.db")
+        con.row_factory = sqlite3.Row
+        cur = con.cursor()
+        cur.execute(
+            "select * from agriOfficer where name=? and password=?", (name, password))
+        data = cur.fetchone()
+
+        if data:
+            session["name"] = data["name"]
+            session["password"] = data["password"]
+            return redirect("/index")
+        else:
+            flash("Username and Password Mismatch", "danger")
+        return redirect("/")
     return render_template('login.html')
-@app.route('/register')
+
+
+@app.route('/register', methods=['GET', 'POST'])
 def register():
+    if request.method == 'POST':
+        try:
+            name = request.form['name']
+            email = request.form['email']
+            govtid = request.form['govtid']
+            password = request.form['password']
+            conn = sqlite3.connect("./agro_drone.db")
+            cur = conn.cursor()
+            cur.execute("INSERT into agriOfficer(name,email,govtid,password)values(?,?,?,?)",
+                        (name, email, govtid, password))
+            conn.commit()
+            flash('Record added Successfully', "success")
+
+        except:
+            flash("Error in inserting", "danger")
+        finally:
+            return redirect("/login")
+
     return render_template('register.html')
-@app.route('/registerUser', methods=["POST", "GET"])
-def registerUser():
-    name = Request.form['name']
-    # email = request.form['email'] 
-    # password = request.form['password']
-    print(name)
-    return redirect("/")
+
+
 @app.route('/detect/video', methods=["POST", "GET"])
 def video_detector():
     if request.method == 'POST':
@@ -125,7 +181,8 @@ def video_detector():
             file.save(os.path.join(app.config['UPLOAD_FOLDER'], filename))
             controller.leaf_detect.run_video_detector(file.filename)
             # Model
-        model = torch.hub.load('ultralytics/yolov5', 'custom', path='exp2/weights/last.pt', force_reload=True)
+        model = torch.hub.load(
+            'ultralytics/yolov5', 'custom', path='exp2/weights/last.pt', force_reload=True)
         folder = 'imgs'
         path = os.listdir(folder)
         imgs = []
@@ -133,7 +190,7 @@ def video_detector():
             if i.endswith(".jpg"):
                 x = Image.open(folder + '/' + i)
                 imgs.append(x)
-    
+
         # Inference
         result = model(imgs)
         res = result
@@ -159,8 +216,10 @@ def video_detector():
         result.append(p_h)
         result.append(p_d)
         res.render()
-        return render_template('result.html', result = result)
+        return render_template('result.html', result=result)
     return redirect(url_for('.analysis'))
+
+
 @app.route('/detect/image', methods=["POST", "GET"])
 def image_detector():
     if request.method == 'POST':
@@ -202,25 +261,30 @@ def image_detector():
             for img in res.imgs:
                 img_base64 = Image.fromarray(img)
                 img_base64.save("static/assets/test.jpg", format="JPEG")
-            return render_template('result.html', result = result)
+            return render_template('result.html', result=result)
     else:
         return redirect(url_for('.analysis'))
+
+
 @app.route('/detect/live', methods=["POST", "GET"])
 def live_detector():
     controller.leaf_detect.run_live_detector()
     return redirect(url_for('.analysis'))
+
+
 @app.route('/play')
 def play_video():
-    return Response(play_vid(),mimetype='multipart/x-mixed-replace; boundary=frame')
+    return Response(play_vid(), mimetype='multipart/x-mixed-replace; boundary=frame')
+
 
 def play_vid():
     cam = cv2.VideoCapture('controller/yolov5/runs/detect/exp/test.mp4')
-    while 1 :
+    while 1:
         try:
-            check,frame = cam.read()
+            check, frame = cam.read()
             #gray = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)
             if(check):
-                imgencode = cv2.imencode('.jpg',frame)[1]
+                imgencode = cv2.imencode('.jpg', frame)[1]
                 strinData = imgencode.tostring()
                 yield (b'--frame\r\n'b'Content-Type: text/plain\r\n\r\n'+strinData+b'\r\n')
         except:
@@ -229,6 +293,5 @@ def play_vid():
     return 'Closed'
 
 
-
 if __name__ == "__main__":
-     app.run(host='0.0.0.0', port=8000, debug=True, threaded=True)
+    app.run(host='0.0.0.0', port=8000, debug=True, threaded=True)
