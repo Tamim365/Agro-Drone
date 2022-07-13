@@ -104,11 +104,15 @@ def index_show():
 
 @app.route('/show_status', methods=['POST', 'GET'])
 def show_status():
-    #conn = index_show()
-    #rows = conn.execute('SELECT * FROM agri_status').fetchall()
+   
     rows = index_show()
     return render_template("area_status.html", rows=rows)
 
+@app.route('/show_index_status', methods=['POST', 'GET'])
+def show_index_status():
+    
+    rows = index_show()
+    return render_template("index.html", rows=rows)
 
 @app.route('/area-map')
 def area_map():
