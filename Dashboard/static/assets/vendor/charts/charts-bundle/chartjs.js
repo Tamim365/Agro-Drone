@@ -9,16 +9,16 @@
                             type: 'line',
 
                             data: {
-                                labels: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'],
+                                labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul'],
                                 datasets: [{
-                                    label: 'Almonds',
+                                    label: 'Healthy',
                                     data: [12, 19, 3, 17, 6, 3, 7],
 
-                                    backgroundColor: "rgba(89, 105, 255,0.5)",
-                                    borderColor: "rgba(89, 105, 255,0.7)",
+                                    backgroundColor: "rgba(59, 75, 255,0.5)",
+                                    borderColor: "rgba(59, 75, 255,0.7)",
                                     borderWidth: 2
                                 }, {
-                                    label: 'Cashew',
+                                    label: 'Diseased',
                                     data: [2, 29, 5, 5, 2, 3, 10],
                                     backgroundColor: "rgba(255, 64, 123,0.5)",
                                     borderColor: "rgba(255, 64, 123,0.7)",

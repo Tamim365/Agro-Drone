@@ -1644,8 +1644,8 @@ Left Navigation Sidebar
     top: 60px;
     overflow: auto;
     background-color: #fff;
-    -webkit-box-shadow: 0px 0px 28px 0px rgba(45, 85, 255, 1);
-    box-shadow: 0px 0px 28px 0px rgba(45, 85, 255, 1);
+    -webkit-box-shadow: 0px 0px 28px 0px rgb(163, 212, 129);
+    box-shadow: 0px 0px 28px 0px rgb(157, 238, 125);
     -webkit-transition: all 0.3s ease;
 }
 
@@ -1717,7 +1717,7 @@ Left Navigation Sidebar
     padding-left: 12px;
     padding-right: 12px;
     /* margin-top: 5px; */
-    background: blue;
+    background: rgb(163, 241, 131);
 }
 
 .nav-left-sidebar .submenu .nav .nav-item .nav-link {
@@ -1762,7 +1762,7 @@ Leftsidebar - Primary
 ------------------------- */
 
 .sidebar-primary {
-    background-color: #414da7;
+    background-color: #cafa92;
 }
 
 .sidebar-primary .nav-divider {
@@ -1781,7 +1781,7 @@ Leftsidebar - Primary
 
 .sidebar-primary.nav-left-sidebar .navbar-nav .nav-link:focus,
 .sidebar-primary.nav-left-sidebar .navbar-nav .nav-link:hover {
-    color: #fff;
+    color: rgb(0, 0, 0);
     background-color: #5761c2;
     border-radius: 2px;
 }
@@ -1789,12 +1789,12 @@ Leftsidebar - Primary
 .sidebar-primary.nav-left-sidebar .navbar-nav .nav-link:focus,
 .sidebar-primary.nav-left-sidebar .navbar-nav .nav-link.active {
     background-color: #5761c2;
-    color: #fff;
+    color: rgb(0, 0, 0);
     border-radius: 2px;
 }
 
 .sidebar-primary.nav-left-sidebar .submenu .nav .nav-item .nav-link:hover {
-    color: #fff;
+    color: rgb(0, 0, 0);
     border-radius: 2px;
     background-color: transparent;
 }
@@ -1805,14 +1805,14 @@ Leftsidebar - dark
 ------------------------- */
 
 .sidebar-dark {
-    background-color: rgb(113, 152, 236);
+    background-color: rgb(203, 243, 151);
     -webkit-box-shadow: 0px 0px 28px 0px rgba(82, 63, 105, 0.13);
     box-shadow: 0px 0px 28px 0px rgba(82, 63, 105, 0.13);
     -webkit-transition: all 0.3s ease;
 }
 
 .sidebar-dark .nav-divider {
-    color: white;
+    color: rgb(0, 0, 0);
     font-size: 24px;
     letter-spacing: 1px;
 }
@@ -1825,7 +1825,7 @@ Leftsidebar - dark
 .sidebar-dark.nav-left-sidebar .navbar-nav .nav-item {}
 
 .sidebar-dark.nav-left-sidebar .navbar-nav .nav-link {
-    color: white;
+    color: rgb(0, 0, 0);
     font-size: 20px;
 }
 
@@ -1882,12 +1882,12 @@ Sidebar Page Navigations
 }
 
 .sidebar-nav-fixed ul li a:hover {
-    color: #5969ff;
+    color: #81d85f;
 }
 
 .sidebar-nav-fixed ul li a.active {
     display: block;
-    color: #5969ff;
+    color: #a3d46a;
     background: #e0e0fd;
 }
 
