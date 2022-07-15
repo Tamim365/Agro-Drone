@@ -36,7 +36,7 @@
         <div class="dashboard-wrapper">
             <div class="container-fluid dashboard-content">
                 <div class="row">
-                        <div class="col-xl-9 col-lg-12 col-md-6 col-sm-12 col-12">
+                        <div class="col-xl-11 col-lg-12 col-md-6 col-sm-12 col-12">
                             <div class="card">
                                 <h5 class="card-header">Recent Area</h5>
                                 <div class="card-body p-0">
@@ -51,7 +51,7 @@
                                                     <th class="border-0">Total Area (km<sup>2</sup>)</th>
                                                     <th class="border-0">Scan Time</th>
                                                     <th class="border-0">Officer<th>
-                                                    <th class="border-0">Status</th>
+                                                    
                                                 </tr>
                                             </thead>
                                             <tbody>
@@ -62,7 +62,7 @@
                                                     <td>{{ row['Total_area'] }}</td>
                                                     <td>{{ row['Scan_time'] }}</td>
                                                     <td>{{ row['Officer'] }}</td>	
-                                                    <td>{{ row['Status'] }}</td>		
+                                                    		
                                                 </tr>
                                               {% endfor %}
                                                 
@@ -80,7 +80,7 @@
                         
 
                           <!--form inputs-->
-                          <form class="splash-container" action="/get_status" method="POST">
+                           <!-- <form class="splash-container" action="/get_status" method="POST">
                             <div class="card">
                                 <div class="card-header">
                                     <h3 class="mb-1">Recent Area</h3>
@@ -101,9 +101,7 @@
                                     <div class="form-group">
                                         <input class="form-control form-control-lg" name="officer" type="text" required="" placeholder="Officer">
                                     </div>
-                                    <div class="form-group">
-                                        <input class="form-control form-control-lg" name="status" type="text" required="" placeholder="Status">
-                                    </div>
+                                    
 
                                     
                                     <div class="form-group">
@@ -112,12 +110,12 @@
                                 </div>
                                 
                             </div>
-                        </form>
-                        
+                        </form> 
+                         -->
 
                        
 
-                        <div class="card">
+                        <!-- <div class="card">
                             <h5 class="card-header">Plants</h5>
                             <div class="card-body">
                                 <div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
@@ -142,7 +140,9 @@
                                     <span class="carousel-control-next-icon" aria-hidden="true"></span>
                                     <span class="sr-only">Next</span> </a>
                             </div>
-                        </div>
+                        </div> -->
+
+                        
                     </div>
 
                 </div>

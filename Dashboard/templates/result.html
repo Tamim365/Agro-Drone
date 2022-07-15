@@ -34,7 +34,56 @@
         <div class="dashboard-wrapper">
             <div class="container-fluid dashboard-content">
                 <div class="row">
-                    <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+
+                    <!--Form inputs submit-->
+                    <div class="col-xl-12 col-lg-12 col-md-6 col-sm-12 col-12">
+                    <form class="splash-container" action="/get_status" method="POST">
+                        <div class="card">
+                            <div class="card-header">
+                                <div class="form-group">
+                                    <input type="submit" class="btn btn-block btn-primary" value="Add">
+                                    
+                                </div>
+                                
+                            </div>
+                            
+                            <div class="card-body">
+                                <div class="form-group">
+                                    <input class="form-control form-control-lg" type="text" name="name" required="" placeholder="Name"
+                                        autocomplete="off">
+                                </div>
+                                <div class="form-group">
+                                    <input class="form-control form-control-lg" type="text" name="id" required="" placeholder="ID"
+                                        autocomplete="off">
+                                </div>
+                                <div class="form-group">
+                                    <input class="form-control form-control-lg" type="text" name="totalarea" required=""
+                                        placeholder="Total Area" autocomplete="off">
+                                </div>
+                                <div class="form-group">
+                                    <input class="form-control form-control-lg" name="scantime" type="text" required=""
+                                        placeholder="Scan time">
+                                </div>
+                                <div class="form-group">
+                                    <input class="form-control form-control-lg" name="officer" type="text" required=""
+                                        placeholder="Officer">
+                                </div>
+                                
+                    
+                    
+                                <div class="form-group">
+                                    <input type="submit" class="btn btn-block btn-primary" value="Submit">
+                                </div>
+                            </div>
+                    
+                        </div>
+                    </form> 
+                    </div>
+
+
+
+
+                    <div class="col-xl-12 col-lg-12 col-md-6 col-sm-12 col-12">
                         <div class="card">
                             <div class="card-header">Test Image</div>
                             <div class="card-body">
@@ -102,6 +151,8 @@
                     </div>
                     {% endif %}
                 </div>
+
+                
                 <div class="row">
                     <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
                         <div class="card">
@@ -124,11 +175,11 @@
                         </div>
                     </div>
                 </div>
-                <div class="row">
-                    <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+                
 
-                    </div>
-                </div>
+                
+               
+
 
                 <div class="row">
                     <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
@@ -142,6 +193,13 @@
                     </div>
                 </div>
             </div>
+
+
+            
+
+           
+
+             
             <!-- ============================================================== -->
             <!-- footer -->
             {% include 'includes/footer.html' %}
