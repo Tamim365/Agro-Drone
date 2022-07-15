@@ -5,9 +5,9 @@ import os
 import sqlite3
 import controller
 #import controller.leaf_detect
-import matplotlib.pyplot as plt
+# import matplotlib.pyplot as plt
 from PIL import Image
-from io import BytesIO
+# from io import BytesIO
 import numpy as np
 import cv2
 import torch

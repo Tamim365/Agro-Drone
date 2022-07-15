@@ -35,10 +35,27 @@
         <!-- ============================================================== -->
         <div class="dashboard-wrapper">
             <div class="container-fluid dashboard-content">
+                <h1>MT AREA STATUS</h1>
                 <div class="row">
+
+                    <div class="col-6">
+                        <div class="input-group mb-3">
+                            <div class="input-group-prepend be-addon">
+                                <button tabindex="-1" type="button" class="btn btn-secondary">AREA</button>
+                                <button tabindex="-1" data-toggle="dropdown" type="button" class="btn btn-secondary dropdown-toggle dropdown-toggle-split"><span class="sr-only">Toggle Dropdown</span></button>
+                                <div class="dropdown-menu"><a href="#" class="dropdown-item">Dhaka</a><a href="#" class="dropdown-item">Rajshahi</a><a href="#" class="dropdown-item">Khulna</a>
+                                    <a href="#" class="dropdown-item">Barishal</a><a href="#" class="dropdown-item">Chottogram</a><a href="#" class="dropdown-item">Natore</a><a href="#" class="dropdown-item">Dinajpur</a>
+                                    <div class="dropdown-divider"></div><a href="#" class="dropdown-item">Another</a>
+                                </div>
+                            </div>
+                            <input type="text" class="form-control">
+                        </div>
+                    </div>
+                    
+
                         <div class="col-xl-11 col-lg-12 col-md-6 col-sm-12 col-12">
                             <div class="card">
-                                <h5 class="card-header">Recent Area</h5>
+                                <!-- <h5 class="card-header">Recent Area</h5> -->
                                 <div class="card-body p-0">
                                     <div class="table-responsive">
                                         <form action="/show_status" METHOD="POST">
@@ -77,75 +94,200 @@
                                 </div>
                             </div>
                         </div>
-                        
-
-                          <!--form inputs-->
-                           <!-- <form class="splash-container" action="/get_status" method="POST">
-                            <div class="card">
-                                <div class="card-header">
-                                    <h3 class="mb-1">Recent Area</h3>
-                                </div>
-                                <div class="card-body">
-                                    <div class="form-group">
-                                        <input class="form-control form-control-lg" type="text" name="name" required="" placeholder="Name" autocomplete="off">
-                                    </div>
-                                    <div class="form-group">
-                                        <input class="form-control form-control-lg" type="text" name="id" required="" placeholder="ID" autocomplete="off">
-                                    </div>
-                                    <div class="form-group">
-                                        <input class="form-control form-control-lg" type="text" name="totalarea" required="" placeholder="Total Area" autocomplete="off">
-                                    </div>
-                                    <div class="form-group">
-                                        <input class="form-control form-control-lg" name="scantime" type="text" required="" placeholder="Scan time">
-                                    </div>
-                                    <div class="form-group">
-                                        <input class="form-control form-control-lg" name="officer" type="text" required="" placeholder="Officer">
-                                    </div>
-                                    
-
-                                    
-                                    <div class="form-group">
-                                        <input type="submit" class="btn btn-block btn-primary" value="Submit">
-                                    </div>
-                                </div>
-                                
-                            </div>
-                        </form> 
-                         -->
-
-                       
-
-                        <!-- <div class="card">
-                            <h5 class="card-header">Plants</h5>
-                            <div class="card-body">
-                                <div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
-                                    <div class="carousel-inner">
-                                        <div class="carousel-item active">
-                                            <img class="d-block w-100" src="../assets/images/card-img-1.jpg" alt="First slide">
-                                        </div>
-                                        <div class="carousel-item">
-                                            <img class="d-block w-100" src="../assets/images/card-img-2.jpg" alt="Second slide">
-                                        </div>
-                                        <div class="carousel-item">
-                                            <img class="d-block w-100" src="../assets/images/card-img-3.jpg" alt="Third slide">
-                                        </div>
-                                    </div>
-                                </div>
-                                <a class="carousel-control-prev" href="#carouselExampleControls" role="button"
-                                    data-slide="prev">
-                                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                                    <span class="sr-only">Previous</span> </a>
-                                <a class="carousel-control-next" href="#carouselExampleControls" role="button"
-                                    data-slide="next">
-                                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                                    <span class="sr-only">Next</span> </a>
-                            </div>
-                        </div> -->
+                  
 
                         
                     </div>
+                    <h1>Information Obtained</h1>
+                    <div class="row">
+                        
+                        <div class="col-xl-3 col-lg-6 col-md-6 col-sm-12 col-12">
+                            <div class="card">
+                                <img class="card-img-top img-fluid p-2" src="../assets/images/mango.jpg" alt="Card image cap">
+                                <div class="card-body">
+                                    <h3 class="card-title">Mango Tree</h3>
+                                    <p class="card-text">Faucibus orci luctus et ultrices lorem posuere cubilia Cuquis ipsum in augue posuere congue.</p>
+                                    <a href="#" class="btn btn-primary">Read More</a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-xl-3 col-lg-6 col-md-6 col-sm-12 col-12">
+                            <div class="card">
+                                <img class="card-img-top img-fluid p-2" src="../assets/images/mango.jpg" alt="Card image cap">
+                                <div class="card-body">
+                                    <h3 class="card-title">Mango Tre</h3>
+                                    <p class="card-text">Faucibus orci luctus et ultrices lorem posuere cubilia Cuquis ipsum in augue posuere congue.</p>
+                                    <a href="#" class="btn btn-primary">Go somewhere</a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-xl-3 col-lg-6 col-md-6 col-sm-12 col-12">
+                            <div class="card">
+                                <img class="card-img-top img-fluid p-2" src="../assets/images/mango.jpg" alt="Card image cap">
+                                <div class="card-body">
+                                    <h3 class="card-title">Mango Tre</h3>
+                                    <p class="card-text">Faucibus orci luctus et ultrices lorem posuere cubilia Cuquis ipsum in augue posuere congue.</p>
+                                    <a href="#" class="btn btn-primary">Go somewhere</a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-xl-3 col-lg-6 col-md-6 col-sm-12 col-12">
+                            <div class="card">
+                                <img class="card-img-top img-fluid p-2" src="../assets/images/mango.jpg" alt="Card image cap">
+                                <div class="card-body">
+                                    <h3 class="card-title">Mango Tre</h3>
+                                    <p class="card-text">Faucibus orci luctus et ultrices lorem posuere cubilia Cuquis ipsum in augue posuere congue.</p>
+                                    <a href="#" class="btn btn-primary">Go somewhere</a>
+                                </div>
+                            </div>
+                        </div>
+    
+                    </div>
+
+                    <!-- <h1>Detail Information</h1> -->
+                    <div class="row">
+                        <div class="container-fluid dashboard-content ">
+                            <!-- ============================================================== -->
+                            <!-- pageheader  -->
+                            <!-- ============================================================== -->
+                            <div class="row">
+                                <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+                                    <div class="page-header">
+                                        <h1 class="pageheader-title">Deatil Information </h1>
+                                        <p class="pageheader-text">Nulla euismod urna eros, sit amet scelerisque torton lectus vel mauris facilisis faucibus at enim quis massa lobortis rutrum.</p>
+                                        <div class="page-breadcrumb">
+                                            <nav aria-label="breadcrumb">
+                                                <ol class="breadcrumb">
+                                                    <li class="breadcrumb-item"><a href="#" class="breadcrumb-link">Agro Drone</a></li>
+                                                    <li class="breadcrumb-item active" aria-current="page">Area Status</li>
+                                                </ol>
+                                            </nav>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- ============================================================== -->
+                            <!-- end pageheader  -->
+                            <!-- ============================================================== -->
+                            <div class="row">
+                                <div class="offset-xl-2 col-xl-8 col-lg-12 col-md-12 col-sm-12 col-12">
+                                    <div class="card">
+                                        <div class="card-header p-4">
+                                             <a class="pt-2 d-inline-block" href="index.html">Table-Mango Tree</a>
+                                           
+                                            <div class="float-right"> <h3 class="mb-0">Mango Tree</h3>
+                                            Date: 3 Dec, 2020</div>
+                                        </div>
+                                        <div class="card-body">
+                                            <div class="row mb-4">
+                                                <div class="col-sm-6">
+                                                    <h5 class="mb-3">Area:</h5>                                            
+                                                    <h3 class="text-dark mb-1">Rajshahi</h3>
+                                                 
+                                                    <div>Area-1, Rajshahi</div>
+                                                    <div>Officer: MD S M Ahmed</div>
+                                                    <div>Email: info@gerald.com.pl</div>
+                                                    <div>Phone: +573-282-9117</div>
+                                                </div>
+                    
+                                            </div>
+                                            <div class="table-responsive-sm">
+                                                <table class="table table-striped">
+                                                    <thead>
+                                                        <tr>
+                                                            <th class="center">Serial</th>
+                                                            <th>Item</th>
+                                                            <th>Description</th>
+                                                            <th class="right">Unit Cost</th>
+                                                            <th class="center">Qty</th>
+                                                            <th class="right">Total</th>
+                                                        </tr>
+                                                    </thead>
+                                                    <tbody>
+                                                        <tr>
+                                                            <td class="center">1</td>
+                                                            <td class="left strong">Origin License</td>
+                                                            <td class="left">Extended License</td>
+                                                            <td class="right">$1500,00</td>
+                                                            <td class="center">1</td>
+                                                            <td class="right">$1500,00</td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td class="center">2</td>
+                                                            <td class="left">Custom Services</td>
+                                                            <td class="left">Instalation and Customization (cost per hour)</td>
+                                                            <td class="right">$110,00</td>
+                                                            <td class="center">20</td>
+                                                            <td class="right">$22.000,00</td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td class="center">3</td>
+                                                            <td class="left">Hosting</td>
+                                                            <td class="left">1 year subcription</td>
+                                                            <td class="right">$309,00</td>
+                                                            <td class="center">1</td>
+                                                            <td class="right">$309,00</td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td class="center">4</td>
+                                                            <td class="left">Platinum Support</td>
+                                                            <td class="left">1 year subcription 24/7</td>
+                                                            <td class="right">$5.000,00</td>
+                                                            <td class="center">1</td>
+                                                            <td class="right">$5.000,00</td>
+                                                        </tr>
+                                                    </tbody>
+                                                </table>
+                                            </div>
+                                            <div class="row">
+                                                <div class="col-lg-4 col-sm-5">
+                                                </div>
+                                                <div class="col-lg-4 col-sm-5 ml-auto">
+                                                    <table class="table table-clear">
+                                                        <tbody>
+                                                            <tr>
+                                                                <td class="left">
+                                                                    <strong class="text-dark">Subtotal</strong>
+                                                                </td>
+                                                                <td class="right">$28,809,00</td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td class="left">
+                                                                    <strong class="text-dark">Discount (20%)</strong>
+                                                                </td>
+                                                                <td class="right">$5,761,00</td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td class="left">
+                                                                    <strong class="text-dark">VAT (10%)</strong>
+                                                                </td>
+                                                                <td class="right">$2,304,00</td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td class="left">
+                                                                    <strong class="text-dark">Total</strong>
+                                                                </td>
+                                                                <td class="right">
+                                                                    <strong class="text-dark">$20,744,00</strong>
+                                                                </td>
+                                                            </tr>
+                                                        </tbody>
+                                                    </table>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="card-footer bg-white">
+                                            <p class="mb-0">2983 Glenview Drive Corpus Christi, TX 78476</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
 
                 </div>
+                
             </div>
         </div>
 
